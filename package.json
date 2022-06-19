@@ -1,0 +1,26 @@
+{
+  "name": "quiz-service",
+  "version": "1.0.0",
+  "description": "Backend service for the quiz reservation app",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karlotopic/quiz-service.git"
+  },
+  "author": "Karlo Topić",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karlotopic/quiz-service/issues"
+  },
+  "homepage": "https://github.com/karlotopic/quiz-service#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.16",
+    "prettier": "2.7.1"
+  },
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
