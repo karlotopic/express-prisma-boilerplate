@@ -1,0 +1,1 @@
+exports.authValidator = require("./authSchema");
