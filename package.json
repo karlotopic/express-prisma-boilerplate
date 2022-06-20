@@ -18,9 +18,11 @@
   "homepage": "https://github.com/karlotopic/quiz-service#readme",
   "devDependencies": {
     "nodemon": "^2.0.16",
-    "prettier": "2.7.1"
+    "prettier": "2.7.1",
+    "prisma": "^3.15.2"
   },
   "dependencies": {
+    "@prisma/client": "^3.15.2",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",

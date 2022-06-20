@@ -1,0 +1,40 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model booking {
+  booking_id     Int     @id @default(autoincrement())
+  quiz_id        Int
+  user_id        Int
+  team_name      String  @db.VarChar(45)
+  num_of_players String? @db.VarChar(45)
+  quiz           quiz    @relation(fields: [quiz_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_booking_quiz_quiz_id")
+
+  @@index([quiz_id], map: "fk_booking_quiz_quiz_id_idx")
+}
+
+model quiz {
+  id               Int       @id @default(autoincrement())
+  start_time       DateTime  @db.DateTime(0)
+  quiz_owner_id    Int
+  max_users        Int
+  registered_users Int?
+  user             user      @relation(fields: [quiz_owner_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_quiz_user_user_id")
+  booking          booking[]
+
+  @@index([quiz_owner_id], map: "fk_quiz_user_user_id_idx")
+}
+
+model user {
+  user_id    Int    @id @default(autoincrement())
+  name       String @db.VarChar(45)
+  email      String @db.VarChar(45)
+  password   String @db.VarChar(45)
+  quiz_owner Int    @db.TinyInt
+  quiz       quiz[]
+}
