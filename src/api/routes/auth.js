@@ -4,7 +4,7 @@ const { authValidator } = require("../../validators");
 const { authController } = require("../controllers");
 const { validateMiddleware } = require("../middlewares");
 
-router.get(
+router.post(
   "/login",
   validateMiddleware.validateJoi(authValidator.loginSchema),
   authController.loginUser

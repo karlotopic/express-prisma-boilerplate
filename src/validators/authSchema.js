@@ -1,16 +1,13 @@
 const Joi = require("joi");
 
-const emailAndPw = {
-  email: Joi.string().email().lowercase().required(),
+const userAndPw = {
+  username: Joi.string().min(5).required(),
   password: Joi.string().min(5).required(),
 };
 
-exports.loginSchema = Joi.object({
-  email: Joi.string().email().lowercase().required(),
-  password: Joi.string().min(5).required(),
-});
+exports.loginSchema = Joi.object(userAndPw);
 
 exports.registerSchema = Joi.object({
-  ...emailAndPw,
-  name: Joi.string().max(50).required(),
+  ...userAndPw,
+  email: Joi.string().email().lowercase().required(),
 });
