@@ -1,11 +1,24 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-exports.sign = (payload) => jwt.sign(payload, process.env.JWT_SECRET_KEY);
+// TO DO: callbacks and try catch
+exports.sign = (payload) => {
+  const token = jwt.sign(payload, process.env.JWT_SECRET_KEY);
+  return {
+    accessToken: `Bearer ${token}`,
+  };
+};
 
-exports.encryptPassword = async (password) => {
+exports.validateToken = (token) =>
+  jwt.verify(
+    token,
+    process.env.JWT_SECRET_KEY,
+    (err, decoded) => decoded
+  );
+
+exports.encrypt = async (payload) => {
   const salt = await bcrypt.genSalt(10);
-  return await bcrypt.hash(password, salt);
+  return await bcrypt.hash(payload, salt);
 };
 
 exports.checkPassword = async (pw, actualPw) =>
