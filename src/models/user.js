@@ -1,9 +1,9 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
-exports.getUser = async (username, password) =>
+exports.getUser = async (username) =>
   await prisma.user.findFirst({
-    where: { username, password },
+    where: { username },
   });
 
 exports.createUser = async ({ username, password, email }) => {
