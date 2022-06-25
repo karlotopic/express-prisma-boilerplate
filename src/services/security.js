@@ -1,7 +1,6 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-// TO DO: callbacks and try catch
 exports.sign = (payload) => {
   const token = jwt.sign(payload, process.env.JWT_SECRET_KEY);
   return {

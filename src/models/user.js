@@ -13,7 +13,6 @@ exports.createUser = async ({ username, password, email }) => {
         username,
         password,
         email,
-        quiz_owner: 0,
       },
     })
     .catch((err) => {
