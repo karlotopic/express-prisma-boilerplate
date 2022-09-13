@@ -5,6 +5,8 @@ const app = express();
 
 const { authRouter } = require("./api/routes");
 
+
+
 env.config();
 
 app.use(cors());
